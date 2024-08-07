@@ -12,7 +12,7 @@ public class WgTunnel implements Tunnel {
 
     @Override
     public String getName() {
-        return "wgpreconf1";
+        return "WireGuard tunnel";
     }
 
     @Override

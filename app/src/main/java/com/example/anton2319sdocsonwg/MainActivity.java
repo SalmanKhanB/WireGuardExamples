@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements WgTunnel.OnStateC
         connectButton = findViewById(R.id.connectButton);
         tunnel = PersistentConnectionProperties.getInstance(this).getTunnel();
         tunnel.addOnStateChangeListener(this);
-
         backend = PersistentConnectionProperties.getInstance(this).getBackend();
+
         if (backend == null) {
             PersistentConnectionProperties.getInstance(this).setBackend(new GoBackend(this));
             backend = PersistentConnectionProperties.getInstance(this).getBackend();
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements WgTunnel.OnStateC
                     backend.setState(tunnel, Tunnel.State.DOWN, null);
                 } else {
                     // update your data here of vpn peer and interface
-                    
+
                     backend.setState(tunnel, Tunnel.State.UP, new Config.Builder()
                             .setInterface(interfaceBuilder.addAddress(InetNetwork.parse("10.0.0.203/32")).parsePrivateKey("YL65C7i/aerowuerxxxxxxxxxxxxxxxxxxxxxxx=").build())
                             .addPeer(peerBuilder.addAllowedIp(InetNetwork.parse("0.0.0.0/0")).setEndpoint(InetEndpoint.parse("139.91.111.11:8000")).parsePublicKey("xmmxmxmmxmxmxmxmxmxmmxmxmxmmxx").setPersistentKeepalive(21).setPreSharedKey(Key.fromBase64("aslidalsiudlasul+vk=")).build())
